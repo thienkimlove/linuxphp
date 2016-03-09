@@ -12,7 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $detect = new Mobile_Detect();
+    return view(($detect->isMobile() ? 'smartphone' : 'web').'.index');
+});
+
+Route::get('detail.html', function () {
+    $detect = new Mobile_Detect();
+    return view(($detect->isMobile() ? 'smartphone' : 'web').'.detail');
 });
 
 Route::get('example/composer', function(){
